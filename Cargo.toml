@@ -1,0 +1,9 @@
+[package]
+name = "async_command"
+license = "Fair"
+description = "Command with asynchronous stdout. Inspired by a tutorial by Andres Vahter."
+version = "0.1.0"
+authors = ["Lukáš Hozda <luk.hozda@gmail.com>"]
+
+[dependencies]
+rusting = "0.1.0"
