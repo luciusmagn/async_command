@@ -2,8 +2,8 @@ extern crate rusting;
 use rusting::Rust;
 
 use std::thread;
-use std::process::Child;
-use std::io::{BufReader, Write, BufRead, Error};
+use std::process::{Command, Stdio};
+use std::io::{BufReader, Write, BufRead};
 use std::sync::mpsc::{Sender, Receiver, channel};
 
 pub struct AsyncCommand {
@@ -16,8 +16,12 @@ fn e<T: ::std::fmt::Display>(e: T) { println!("doesn't rust: {}", e); }
 fn o() { println!("no rusting for empty options"); }
 
 impl AsyncCommand {
-	pub fn new(c: Result<Child, Error>) -> AsyncCommand {
-		let process = c.rust(e);
+	pub fn new(c: &mut Command) -> AsyncCommand {
+		let process = c
+			.stdin(Stdio::piped())
+			.stdout(Stdio::piped())
+			.spawn()
+			.rust(e);
 
 		let (tx, rx) = channel();
 		

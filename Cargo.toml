@@ -2,7 +2,7 @@
 name = "async_command"
 license = "Fair"
 description = "Command with asynchronous stdout. Inspired by a tutorial by Andres Vahter."
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Lukáš Hozda <luk.hozda@gmail.com>"]
 
 [dependencies]
